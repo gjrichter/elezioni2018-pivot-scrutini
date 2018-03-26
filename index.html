@@ -197,7 +197,6 @@
 			.addSource("https://raw.githubusercontent.com/ondata/elezionipolitiche2018/master/dati/scrutiniCI_cm.csv","csv")
 			.addSource("https://raw.githubusercontent.com/ondata/elezionipolitiche2018/master/risorse/comuniViminaleISTAT.csv","csv")
 			.addSource("https://raw.githubusercontent.com/ondata/elezionipolitiche2018/master/dati/camera_geopolitico_italia.csv","csv")
-			.addSource("../../maps/svg/maps/ISTAT 2011 Comuni/risultati_comuni_camera_2013.js","jsonDB")
 			.realize(
 		
 		function(broker) {
@@ -303,38 +302,6 @@
 			pivot.addColumn({destination:'CDES'},
 				function(value){
 					return (value[i1]+value[i2]+value[i3]+value[i4]);
-			});
-
-			// --------------------------------------------------------------------------------------------
-			// add results from 2013    
-			// --------------------------------------------------------------------------------------------
-
-			// create new column with 'PARTITO DEMOCRATICO 2013'   
-			// --------------------------------------------------------------------------------------------
-			pivot.addColumn({source:'nome_lower',destination:'PARTITO DEMOCRATICO 2013'},
-				function(value){
-					return (votes2013.lookup(value,{value:"Partito Democratico (Pd)",lookup:"Comune"}));
-			});
-
-			// create new column with 'PARTITO DEMOCRATICO 2013'   
-			// --------------------------------------------------------------------------------------------
-			pivot.addColumn({source:'nome_lower',destination:'FORZA ITALIA 2013'},
-				function(value){
-					return (votes2013.lookup(value,{value:"Il Popolo della liberta (Pdl)",lookup:"Comune"}));
-			});
-
-			// create new column with 'LEGA 2013'   
-			// --------------------------------------------------------------------------------------------
-			pivot.addColumn({source:'nome_lower',destination:'LEGA 2013'},
-				function(value){
-					return (votes2013.lookup(value,{value:"Lega Nord",lookup:"Comune"}));
-			});
-
-			// create new column with 'MOVIMENTO 5 STELLE 2013'   
-			// --------------------------------------------------------------------------------------------
-			pivot.addColumn({source:'nome_lower',destination:'MOVIMENTO 5 STELLE 2013'},
-				function(value){
-					return (votes2013.lookup(value,{value:"MoVimento 5 Stelle - beppegrillo.it",lookup:"Comune"}));
 			});
 
 			// --------------------------------------------------------------------------------------------
